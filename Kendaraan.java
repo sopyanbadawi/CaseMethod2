@@ -8,6 +8,10 @@ public class Kendaraan {
     }
 
     public void tampilkanInformasi() {
+        System.out.println("Plat Nomor: " + platNomor);
+        System.out.println("Tipe: " + tipe);
+        System.out.println("Merk: " + merk);
+        System.out.println();
 
     }
 }

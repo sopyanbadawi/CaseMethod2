@@ -8,7 +8,7 @@ public class SPBUMain {
         int pilihan;
 
         do {
-            System.out.println("=== Menu SPBU ===");
+            System.out.println("--- Menu SPBU ---");
             System.out.println("1. Tambah Antrian Kendaraan");
             System.out.println("2. Tampilkan Antrian Kendaraan");
             System.out.println("3. Cek Jumlah Antrian Kendaraan");
@@ -29,23 +29,24 @@ public class SPBUMain {
                     String merk = scan.nextLine();
                     Kendaraan kendaraan = new Kendaraan(platNomor, tipe, merk);
                     antrian.addLast(kendaraan);
-                    System.out.println("Kendaraan masuk ke dalam Antrian.");
+                    System.out.println(">> Kendaraan masuk ke dalam antrian. \n");
                     break;
 
                 case 2:
-                    System.out.println("Antrian Kendaraan:");
+                    System.out.println("Antrian Kendaraan: ");    
+                    System.out.println("\n--- Antrian Kendaraan ---");
                     antrian.print();
                     break;
 
                 case 3:
-                    System.out.println("Jumlah antrian kendaraan: " + antrian.getSize());
+                    System.out.println("\n>> Jumlah kendaraan dalam antrian: " + antrian.getSize() + " \n");
                     break;
 
                 case 4:
                     if (antrian.isEmpty()) {
-                        System.out.println("Tidak ada kendaraan yang mengantri.");
+                        System.out.println("Belum ada kendaraan yang mengantri. \n");
                     } else {
-                        Kendaraan kendaraanAntri = antrian.head.kendaraan;
+                        Kendaraan kendaraanAntri = antrian.head.data;
                         System.out.println("Petugas Melayani " + kendaraanAntri.platNomor);
                         System.out.print("Masukkan jenis BBM: ");
                         String jenisBBM = scan.nextLine();
@@ -57,21 +58,16 @@ public class SPBUMain {
 
                         BBM bbm = new BBM(jenisBBM, hargaPerLiter);
                         TransaksiPengisian transaksi = new TransaksiPengisian(kendaraanAntri, bbm, liter);
-                        antrian.removeFirst();
                         riwayatTransaksi.enqueue(transaksi);
-                        System.out.println("Transaksi berhasil dicatat.");
+                        antrian.removeFirst();
+                        System.out.println(">> Transaksi berhasil dicatat.\n");
                     }
 
                     break;
 
                 case 5:
-                    if (riwayatTransaksi.isEmpty()) {
-                        System.out.println("Tidak ada transaksi yang dilayani.");
-                    } else {
-                        System.out.println("-- Riwayat Transaksi --");
-                        riwayatTransaksi.print();
-                    }
-
+                    System.out.println("\n-- Daftar Transaksi --");
+                    riwayatTransaksi.print();
                     break;
 
                 case 0:
