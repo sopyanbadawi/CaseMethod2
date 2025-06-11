@@ -25,10 +25,9 @@ public class RiwayatQueue {
         }
     }
 
-    public boolean enqueue(TransaksiPengisian dt) {
+    public void enqueue(TransaksiPengisian dt) {
         if (isFull()) {
             System.out.println("Queue sudah penuh!");
-            return false;
         } else {
             if (isEmpty()) {
                 front = rear = 0;
@@ -41,7 +40,6 @@ public class RiwayatQueue {
             }
             data[rear] = dt;
             size++;
-            return true;
         }
     }
 
@@ -51,7 +49,7 @@ public class RiwayatQueue {
         } else {
             int i = front;
             while (i != rear) {
-                System.out.println(data[i].kendaraan.platNomor + ": Rp. " + data[i].bbm.hargaPerLiter * data[i].liter + "\n");
+                System.out.println(data[i].kendaraan.platNomor + ": Rp. " + data[i].bbm.hargaPerLiter * data[i].liter);
                 i = (i + 1) % max;
             }
             System.out.println(data[i].kendaraan.platNomor + ": Rp. " + data[i].bbm.hargaPerLiter * data[i].liter + "\n");
